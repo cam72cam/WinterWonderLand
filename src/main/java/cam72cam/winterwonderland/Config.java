@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config.Comment;
 @net.minecraftforge.common.config.Config(modid=WinterWonderLand.MODID)
 public class Config {
 	@Comment({"How quickly snow accumulates [200 = slow, 10 = fast]"})
-	public static int accumulationRate = 100;
+	public static int accumulationRate = 200;
 	
 	@Comment({"How many sides need to be at the same level before more snow is allowed to accumulate [0 = none, 4 = all]"})
 	public static int smoothing = 2;
@@ -15,4 +15,7 @@ public class Config {
 	
 	@Comment({"Max snow layers, 8 layers per block"})
 	public static int maxSnowLayers = 8;
+	
+	@Comment({"How quickly snow melts [400 = slow, 20 = fast]"})
+	public static int snowMeltRate = 400;
 }
