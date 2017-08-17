@@ -25,7 +25,7 @@ public class WinterWonderLand
     	private static Random r = new Random();
     	
     	@SubscribeEvent
-    	public static void registerEntities(WorldTickEvent event) {
+    	public static void onWorldTick(WorldTickEvent event) {
     		WorldServer world = (WorldServer) event.world;
     		
     		if (!world.isRaining()) {
