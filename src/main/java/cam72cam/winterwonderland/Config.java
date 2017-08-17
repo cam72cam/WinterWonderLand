@@ -18,4 +18,7 @@ public class Config {
 	
 	@Comment({"How quickly snow melts [400 = slow, 20 = fast]"})
 	public static int snowMeltRate = 400;
+	
+	@Comment({"Base snow layers to leave when melting"})
+	public static int snowMinLayers = 1;
 }

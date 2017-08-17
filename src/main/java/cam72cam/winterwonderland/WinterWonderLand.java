@@ -71,7 +71,7 @@ public class WinterWonderLand
     			
     			int layers = snowHeightAt(world, pos);
     			
-    			if (layers == 0) {
+    			if (layers <= Config.snowMinLayers) {
     				continue;
     			}
     			
