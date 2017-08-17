@@ -12,4 +12,7 @@ public class Config {
 	
 	@Comment({"Number of blocks to increase the snow level at around a snow accumulation event [1 = single block, 5 = a + sign, 9 = all around"})
 	public static int snowDriftArea = 5;
+	
+	@Comment({"Max snow layers, 8 layers per block"})
+	public static int maxSnowLayers = 8;
 }

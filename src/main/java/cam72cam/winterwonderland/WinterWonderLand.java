@@ -42,12 +42,12 @@ public class WinterWonderLand
 
     		for (Iterator<Chunk> iterator = world.getPersistentChunkIterable(world.getPlayerChunkMap().getChunkIterator()); iterator.hasNext();) {
     			Chunk chunk = iterator.next();
-
-    			if (!world.provider.canDoRainSnowIce(chunk)) {
-    				continue;
-    			}
     			
     			if (r.nextInt(baseRate) != 0) {
+    				continue;
+    			}
+
+    			if (!world.provider.canDoRainSnowIce(chunk)) {
     				continue;
     			}
 
@@ -95,20 +95,38 @@ public class WinterWonderLand
     	}
     	private static void incrementSnowHeight(WorldServer world, BlockPos pos) {
     		pos = world.getPrecipitationHeight(pos);
+    		
+    		// Precipitation height ignores snow blocks, need to loop to the top of the stack
+    		while (world.getBlockState(pos.up()).getBlock() == Blocks.SNOW_LAYER) {
+    			pos = pos.up();
+    		}
+    		
     		int layers = snowHeightAt(world, pos);
 
+    		// Check if we can snow here if this is the first snow layer
 			if(layers == 0 && !world.canSnowAt(pos, true)) {
 				return;
 			}
 			
-			if (layers < 8) {
-				world.setBlockState(pos, Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layers+1));
+			if (layers >= Config.maxSnowLayers ) {
+				return;
+			}
+			
+			if (layers == 0 || layers % 8 != 0) {
+				// Continue stacking on current stack
+				world.setBlockState(pos, Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layers%8+1));
+			} else {
+				// Add onto stack on block above, this one is full
+				world.setBlockState(pos.up(), Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layers%8+1));
 			}
 		}
 		private static int snowHeightAt(WorldServer world, BlockPos pos) {
 			IBlockState currentBlock = world.getBlockState(pos);
 			if (currentBlock.getBlock() == Blocks.SNOW_LAYER) {
-				return currentBlock.getValue(BlockSnow.LAYERS);
+				return snowHeightAt(world, pos.down()) + currentBlock.getValue(BlockSnow.LAYERS);
+			}
+			if (currentBlock.getBlock() == Blocks.AIR) {
+				return snowHeightAt(world, pos.down());
 			}
 			return 0;
     	}
