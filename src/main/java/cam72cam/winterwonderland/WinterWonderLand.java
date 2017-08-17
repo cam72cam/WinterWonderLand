@@ -96,6 +96,11 @@ public class WinterWonderLand
     	private static void incrementSnowHeight(WorldServer world, BlockPos pos) {
     		pos = world.getPrecipitationHeight(pos);
     		int layers = snowHeightAt(world, pos);
+
+			if(!world.canSnowAt(pos, true)) {
+				return;
+			}
+			
 			if (layers < 8) {
 				world.setBlockState(pos, Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layers+1));
 			}
