@@ -1,0 +1,16 @@
+[
+{
+  "modid": "WinterWonderLand",
+  "name": "Winter WonderLand",
+  "description": "Who does not like waking up to a field of deep snow outside their window?",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["cam72cam"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
