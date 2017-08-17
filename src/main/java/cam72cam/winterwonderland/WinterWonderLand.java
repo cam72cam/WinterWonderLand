@@ -57,14 +57,21 @@ public class WinterWonderLand
     			int posZ = r.nextInt(16);
     			
     			BlockPos pos = world.getPrecipitationHeight(new BlockPos(j + posX, 0, k + posZ));
-    			IBlockState currentBlock = world.getBlockState(pos);
-    			if (currentBlock.getBlock() == Blocks.SNOW_LAYER) {
-    				Integer layers = currentBlock.getValue(BlockSnow.LAYERS);
-    				if (layers < 8) {
-    					world.setBlockState(pos, currentBlock.withProperty(BlockSnow.LAYERS, layers + 1));
-    				}
+    			int layers = snowHeightAt(world, pos);
+    			if (layers > 1 && layers < 8) {
+    				setSnowHeight(world, pos, layers+1);
     			}
     		}
+    	}
+    	private static void setSnowHeight(WorldServer world, BlockPos pos, int layers) {
+			world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockSnow.LAYERS, layers + 1));
+		}
+		private static int snowHeightAt(WorldServer world, BlockPos pos) {
+			IBlockState currentBlock = world.getBlockState(pos);
+			if (currentBlock.getBlock() == Blocks.SNOW_LAYER) {
+				return currentBlock.getValue(BlockSnow.LAYERS);
+			}
+			return 0;
     	}
     }
 }
