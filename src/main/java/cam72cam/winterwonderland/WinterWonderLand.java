@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 public class WinterWonderLand
 {
     public static final String MODID = "winterwonderland";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1.1";
     
     @EventBusSubscriber
     public static class EventHander {
@@ -97,7 +97,7 @@ public class WinterWonderLand
     		pos = world.getPrecipitationHeight(pos);
     		int layers = snowHeightAt(world, pos);
 
-			if(!world.canSnowAt(pos, true)) {
+			if(layers == 0 && !world.canSnowAt(pos, true)) {
 				return;
 			}
 			
