@@ -9,6 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -150,6 +151,8 @@ public class WinterWonderLand
 
     		// Check if we can snow here if this is the first snow layer
 			if(layers == 0 && !world.canSnowAt(pos, true)) {
+				return;
+			} else if (world.getBiome(pos).getTempCategory() != TempCategory.COLD) {
 				return;
 			}
 			
