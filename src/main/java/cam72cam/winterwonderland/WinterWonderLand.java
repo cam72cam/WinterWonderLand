@@ -9,6 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -55,6 +56,10 @@ public class WinterWonderLand
     		}
     		
     		return pos;
+		}
+		
+		private static boolean isSnowyArea(WorldServer world, BlockPos pos) {
+			return world.getBiome(pos).getFloatTemperature(pos) < 0.15F;
 		}
     	
     	private static void onTickSnowDecrease(WorldServer world) {
@@ -150,6 +155,8 @@ public class WinterWonderLand
 
     		// Check if we can snow here if this is the first snow layer
 			if(layers == 0 && !world.canSnowAt(pos, true)) {
+				return;
+			} else if (!isSnowyArea(world, pos)) {
 				return;
 			}
 			
