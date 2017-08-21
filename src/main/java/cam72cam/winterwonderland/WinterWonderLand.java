@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
-@Mod(modid = WinterWonderLand.MODID, version = WinterWonderLand.VERSION, acceptedMinecraftVersions = "[1.11,1.12)", acceptableRemoteVersions = "*")
+@Mod(modid = WinterWonderLand.MODID, version = WinterWonderLand.VERSION, acceptedMinecraftVersions = "[1.10,1.11)", acceptableRemoteVersions = "*")
 public class WinterWonderLand
 {
     public static final String MODID = "winterwonderland";
