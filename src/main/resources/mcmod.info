@@ -2,10 +2,10 @@
 {
   "modid": "WinterWonderLand",
   "name": "Winter WonderLand",
-  "description": "Who does not like waking up to a field of deep snow outside their window?",
+  "description": "Who doesn't like waking up to a field of deep snow outside their window?",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/winter-wonder-land",
   "updateUrl": "",
   "authorList": ["cam72cam"],
   "credits": "",

@@ -9,7 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -20,7 +19,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 public class WinterWonderLand
 {
     public static final String MODID = "winterwonderland";
-    public static final String VERSION = "1.2.0";
+    public static final String VERSION = "1.2.1";
     
     @EventBusSubscriber
     public static class EventHander {
