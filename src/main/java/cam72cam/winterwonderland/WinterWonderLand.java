@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 public class WinterWonderLand
 {
     public static final String MODID = "winterwonderland";
-    public static final String VERSION = "1.2.1";
+    public static final String VERSION = "1.2.2";
     
     @EventBusSubscriber
     public static class EventHander {
