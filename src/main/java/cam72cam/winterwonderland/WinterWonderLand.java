@@ -176,7 +176,7 @@ public class WinterWonderLand
 			if (currentBlock.getBlock() == Blocks.SNOW_LAYER) {
 				return snowHeightAt(world, pos.down()) + currentBlock.getValue(BlockSnow.LAYERS);
 			}
-			if (currentBlock.getBlock() == Blocks.AIR) {
+			if (currentBlock.getBlock() == Blocks.AIR && world.getBlockState(pos.down()).getBlock() != Blocks.AIR) {
 				return snowHeightAt(world, pos.down());
 			}
 			return 0;
